@@ -9,12 +9,15 @@ class Board {
         this.tasks.push(task);
     }
 
-    getTasks(status) {
-        if (status) {
-            return this.tasks.filter(t => t.status === status);
+	getTasks(status) {
+    	if (status) {
+        	const validStatuses = ['todo', 'in-progress', 'done'];
+        	if (!validStatuses.includes(status)) {
+            return this.tasks; // invalid status -> return all
         }
-        return this.tasks;
+        return this.tasks.filter(t => t.status === status);
     }
+    return this.tasks;
 }
 
 module.exports = Board;
